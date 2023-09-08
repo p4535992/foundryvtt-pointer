@@ -18,22 +18,16 @@ export class PointerContainer extends PIXI.Container {
   static init() {
     // called inside the ready hook, so settings are registered.
     // ready hook *always* is supposed to come after the canvasReady hook
-    if (canvas.scene)
-      canvas.controls.pointer = canvas.controls.addChild(
-        new PointerContainer()
-      );
+    if (canvas.scene) canvas.controls.pointer = canvas.controls.addChild(new PointerContainer());
 
     // window.addEventListener('mousemove', PointerContainer.trackMousePos);
     game.socket.on("module.pointer", PointerContainer.socketHandler);
     // but ready comes only during initialization
     // so we need to take care of future scene changes (or other reasons for canvas rerenders)
     Hooks.on("canvasReady", () => {
-      if (canvas.controls.pointer)
-        canvas.controls.pointer.destroy({ chidren: true });
+      if (canvas.controls.pointer) canvas.controls.pointer.destroy({ chidren: true });
 
-      canvas.controls.pointer = canvas.controls.addChild(
-        new PointerContainer()
-      );
+      canvas.controls.pointer = canvas.controls.addChild(new PointerContainer());
     });
   }
 
@@ -50,19 +44,10 @@ export class PointerContainer extends PIXI.Container {
   }
 
   _getUserPointerData(user) {
-    const collection =
-      game.settings.get("pointer", "collection") ||
-      PointerSettingsMenu.defaultCollection;
-    const settings = mergeObject(
-      PointerSettingsMenu.defaultSettings,
-      user.getFlag("pointer", "settings")
-    );
-    const pointerData =
-      collection.find((e) => e.id === settings.pointer) || collection[0];
-    const pingData =
-      collection.find((e) => e.id === settings.ping) ||
-      collection[1] ||
-      collection[0];
+    const collection = game.settings.get("pointer", "collection") || PointerSettingsMenu.defaultCollection;
+    const settings = mergeObject(PointerSettingsMenu.defaultSettings, user.getFlag("pointer", "settings"));
+    const pointerData = collection.find((e) => e.id === settings.pointer) || collection[0];
+    const pingData = collection.find((e) => e.id === settings.ping) || collection[1] || collection[0];
     return { pointer: pointerData, ping: pingData };
   }
 
@@ -129,8 +114,7 @@ export class PointerContainer extends PIXI.Container {
       canvas.controls.pointer.hidePointer(data.senderId);
       return;
     } else if (data.sceneId !== canvas.scene.id) return;
-    else if (data.type === "pointer")
-      canvas.controls.pointer.movePointer(data.senderId, data.position);
+    else if (data.type === "pointer") canvas.controls.pointer.movePointer(data.senderId, data.position);
     else if (data.type === "ping")
       canvas.controls.pointer.ping({
         userId: data.senderId,

@@ -3,10 +3,56 @@
   "title": "PnP - Pointer and Pings!",
   "description": "Gives all players the option to show a customizable cursor on demand, as well as ping any location with a custom ping!<br>Hotkeys, pings, pointer, everything customizable!<br>As GM you can also move your players view to your pin on demand.",
   "version": "2.6.0",
-  "authors": [{ "name": "Moerill" }],
-  "esmodules": ["module.js"],
-  "styles": ["styles/pointer.css", "styles/pointer-settings.css"],
-  "scripts": ["greensock/dist/gsap.min.js"],
+  "authors": [
+    {
+      "name": "Moerill",
+      "url": "https://github.com/moerill"
+    },
+    {
+      "name": "farling42",
+      "url": "https://github.com/farling42/"
+    },
+    {
+      "name": "p4535992",
+      "url": "https://github.com/p4535992",
+      "discord": "",
+      "twitter": "",
+      "patreon": "",
+      "github": "p4535992",
+      "ko-fi": "",
+      "reddit": "",
+      "email": ""
+    }
+  ],
+  "type": "module",
+  "socket": true,
+  "includes": [
+    "./assets/**",
+    "./lang/**",
+    "./languages/**",
+    "./scripts/**",
+    "./styles/**",
+    "./templates/**",
+    "./module.json",
+    "./README.md",
+    "./icons/**",
+    "./images/**",
+    "./packs/**"
+  ],
+  "media": [
+    {
+      "type": "icon",
+      "location": ""
+    },
+    {
+      "type": "cover",
+      "location": ""
+    },
+    {
+      "type": "screenshot",
+      "location": ""
+    }
+  ],
   "languages": [
     {
       "lang": "en",
@@ -22,45 +68,46 @@
       "lang": "de",
       "name": "Deutsch",
       "path": "lang/de.json"
-		},
-		{
-			"lang": "ja",
-			"name": "日本語",
-			"path": "lang/ja.json"
-    }
-  ],
-  "compatibility": {
-    "minimum": "10",
-    "verified": "11.302",
-    "maximum": "11"
-  },
-  "socket": true,
-  "manifest": "#{MANIFEST}#",
-  "download": "#{DOWNLOAD}#",
-  "url": "#{URL}#",
-  "bugs": "#{URL}#/issues",
-  "flags": {
-    "media": [
-      {
-        "type": "icon",
-        "url": "https://raw.githubusercontent.com/farling42/fvtt-pointer/master/doc/icon.webp"
-      },
-      {
-        "type": "cover",
-        "url": "https://raw.githubusercontent.com/farling42/fvtt-pointer/master/doc/cover.webp"
-      }
-    ],
-    "manifestPlusVersion": "1.2.0",
-    "allowBugReporter": true
-  },
-  "media": [
-    {
-      "type": "icon",
-      "url": "https://raw.githubusercontent.com/farling42/fvtt-pointer/master/doc/icon.webp"
     },
     {
-      "type": "cover",
-      "url": "https://raw.githubusercontent.com/farling42/fvtt-pointer/master/doc/cover.webp"
+      "lang": "ja",
+      "name": "日本語",
+      "path": "lang/ja.json"
     }
-  ]
+  ],
+  "scripts": ["greensock/dist/gsap.min.js"],
+  "esmodules": ["module.js"],
+  "styles": ["styles/pointer.css", "styles/pointer-settings.css"],
+  "packs": [],
+  "url": "https://github.com/p4535992/foundryvtt-pointer",
+  "manifest": "https://github.com/p4535992/foundryvtt-pointer/releases/download/2.6.0/module.json",
+  "download": "https://github.com/p4535992/foundryvtt-pointer/releases/download/2.6.0/module.zip",
+  "readme": "https://github.com/p4535992/foundryvtt-pointer/blob/master/README.md",
+  "changelog": "https://github.com/p4535992/foundryvtt-pointer/blob/master/changelog.md",
+  "bugs": "https://github.com/p4535992/foundryvtt-pointer/issues",
+  "compatibility": {
+    "minimum": 11,
+    "verified": 11,
+    "maximum": 11
+  },
+  "manifestPlusVersion": "1.2.0",
+  "allowBugReporter": true,
+  "relationships": {
+    "systems": [],
+    "requires": [
+      {
+        "id": "lib-wrapper",
+        "type": "module",
+        "manifest": "https://github.com/ruipin/fvtt-lib-wrapper/releases/latest/download/module.json",
+        "compatibility": {}
+      },
+      {
+        "id": "socketlib",
+        "type": "module",
+        "manifest": "https://raw.githubusercontent.com/manuelVo/foundryvtt-socketlib/develop/module.json",
+        "compatibility": {}
+      }
+    ],
+    "conflicts": []
+  }
 }

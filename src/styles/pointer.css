@@ -14,7 +14,7 @@
 .pointer-settings a,
 .pointer-settings label {
   mix-blend-mode: difference;
-  color: #DDD;
+  color: #ddd;
 }
 .pointer-settings .pointer-hint {
   flex: 0 100%;
@@ -178,7 +178,7 @@
   padding-right: 1ch;
 }
 .pointer-settings .chooser-tab.active .chooser .add-pointer:before {
-  content: '\f067';
+  content: "\f067";
   font-family: "Font Awesome 5 Free";
   font-weight: 900;
 }
@@ -187,17 +187,17 @@
 }
 .pointer-settings .chooser-tab.active .chooser .delete-pointer:before {
   font-size: 0.8em;
-  content: '\f1f8';
+  content: "\f1f8";
   font-family: "Font Awesome 5 Free";
   font-weight: 900;
 }
 .pointer-settings .chooser-tab.active .chooser .header .delete-pointer:before {
-  content: '';
+  content: "";
 }
 .pointer-settings .form-fields {
   position: relative;
 }
-.pointer-settings .form-fields input[type='range'] {
+.pointer-settings .form-fields input[type="range"] {
   z-index: 1;
   margin-top: -0.8em;
 }
