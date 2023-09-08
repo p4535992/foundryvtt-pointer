@@ -1,4 +1,4 @@
-import { PointerSettingsMenu } from './settings.js';
+import { PointerSettingsMenu } from './settings-menu.js';
 
 import initControls from '../keybindings.js';
 
