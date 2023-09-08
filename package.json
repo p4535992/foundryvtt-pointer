@@ -1,22 +1,55 @@
 {
-	"name": "module-template",
-	"version": "2.4.0",
-	"description": "",
-	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1"
-	},
-	"author": "Moerill",
-	"license": "MIT",
-	"devDependencies": {
-		"foundry-pc-types": "gitlab:foundry-projects/foundry-pc/foundry-pc-types"
+    "name": "pointer",
+    "title": "PnP - Pointer and Pings!",
+    "description": "Gives all players the option to show a customizable cursor on demand, as well as ping any location with a custom ping!<br>Hotkeys, pings, pointer, everything customizable!<br>As GM you can also move your players view to your pin on demand.",
+    "version": "2.6.0",
+	"main": "module.js",
+	"license": "SEE LICENSE IN LICENSE",
+	"private": true,
+	"type": "module",
+	"author": "",
+	"contributors": [],
+	"imports": {
+		"#runtime/*": "@typhonjs-fvtt/runtime/*",
+		"#standard/*": "@typhonjs-fvtt/svelte-standard/*"
 	},
 	"dependencies": {
-		"browser-sync": "^2.27.10",
-		"chalk": "^4.1.2",
-		"gulp": "^4.0.2",
-		"gulp-concat": "^2.6.1",
-		"gulp-git": "^2.10.1",
-		"gulp-less": "^4.0.1",
-		"yargs": "^15.4.1"
+		"@fortawesome/fontawesome-svg-core": "^6.4.0",
+		"@fortawesome/free-solid-svg-icons": "^6.4.0",
+		"@fortawesome/react-fontawesome": "^0.2.0",
+        "@rollup/plugin-node-resolve": "^15.2.1",
+		"@typhonjs-fvtt/runtime": "^0.1.0",
+		"@typhonjs-fvtt/svelte-standard": "^0.1.0",
+		"svelte": "^4.0.0",
+		"svelte-virtual-scroll-list": "^1.1.0"
+	},
+	"devDependencies": {
+		"@typhonjs-config/eslint-config": "^0.3.0",
+		"eslint": "^8",
+		"husky": "^8.0.3",
+		"jquery": "^3.6.4",
+		"lint-staged": "^13.2.1",
+		"prettier": "^2.8.7",
+		"sass": "^1.63.6",
+		"svelte-dnd-action": "^0.9.18",
+		"svelte-preprocess": "^5",
+		"vite": "^4.4.0",
+		"vite-plugin-clean": "^1.0.0",
+		"vite-plugin-run": "^0.4.1",
+		"vite-plugin-static-copy": "^0.16.0"
+	},
+	"browserslist": [
+		">5%",
+		"not IE 11"
+	],
+	"scripts": {
+		"build": "vite build",
+		"dev": "vite",
+		"eslint": "eslint .",
+		"prepare": "husky install",
+		"prettier-format": "prettier --config .prettierrc --write \"./src/**/*.{ts,js,mjs,json,scss,css}\""
+	},
+	"lint-staged": {
+		"*.{js,css}": "prettier --write"
 	}
 }

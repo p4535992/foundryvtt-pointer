@@ -2,10 +2,10 @@
   "id": "pointer",
   "title": "PnP - Pointer and Pings!",
   "description": "Gives all players the option to show a customizable cursor on demand, as well as ping any location with a custom ping!<br>Hotkeys, pings, pointer, everything customizable!<br>As GM you can also move your players view to your pin on demand.",
-  "version": "#{VERSION}#",
+  "version": "2.6.0",
   "authors": [{ "name": "Moerill" }],
-  "esmodules": ["js/index.js"],
-  "styles": ["fvtt-pointer.css"],
+  "esmodules": ["module.js"],
+  "styles": ["styles/pointer.css", "styles/pointer-settings.css"],
   "scripts": ["greensock/dist/gsap.min.js"],
   "languages": [
     {
