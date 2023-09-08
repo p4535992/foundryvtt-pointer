@@ -1,181 +1,59 @@
 import { i18n } from "./lib/lib.js";
 import CONSTANTS from "./constants.js";
-import { refresh } from "./module.js";
+import { refresh } from "./main.js";
 export const registerSettings = function () {
-	game.settings.registerMenu(CONSTANTS.MODULE_NAME, "resetAllSettings", {
-		name: `${CONSTANTS.MODULE_NAME}.setting.reset.name`,
-		hint: `${CONSTANTS.MODULE_NAME}.setting.reset.hint`,
-		icon: "fas fa-coins",
-		type: ResetSettingsDialog,
-		restricted: true
-	});
-	game.settings.register(CONSTANTS.MODULE_NAME, "rarityFlag", {
-		name: `${CONSTANTS.MODULE_NAME}.setting.rarityFlag.name`,
-		hint: `${CONSTANTS.MODULE_NAME}.setting.rarityFlag.hint`,
+	game.settings.register('pointer', 'default', {
+		name: "Activate placeables changes.",
+		hint: "Changes some behaviours of placeables, like preview snapping to grid. Reload for all connected clients is required for this to take effect if changed!",
 		scope: "world",
-		config: true,
-		default: true,
-		type: Boolean
+		config: false,
+		default: PointerSettingsMenu.defaultSettings,
+		type: Object
 	});
 
-	game.settings.register(CONSTANTS.MODULE_NAME, "spellFlag", {
-		name: `${CONSTANTS.MODULE_NAME}.setting.spellFlag.name`,
-		hint: `${CONSTANTS.MODULE_NAME}.setting.spellFlag.hint`,
-		scope: "world",
-		config: true,
-		default: true,
-		type: Boolean
+	game.settings.registerMenu('pointer', 'design-studio', {
+		name: game.i18n.localize('POINTER.Settings.Name'),
+		label: game.i18n.localize('POINTER.Settings.Button'),
+		icon: 'fas fa-paint-roller',
+		type: PointerSettingsMenu,
+		restricted: false
 	});
 
-	game.settings.register(CONSTANTS.MODULE_NAME, "featFlag", {
-		name: `${CONSTANTS.MODULE_NAME}.setting.featFlag.name`,
-		hint: `${CONSTANTS.MODULE_NAME}.setting.featFlag.hint`,
+	game.settings.register('pointer', 'collection', {
+		name: "Collection of all pings and pointers",
+		config: false,
+		restricted: false,
 		scope: "world",
-		config: true,
-		default: true,
-		type: Boolean
+		type: Object,
+		default: PointerSettingsMenu.defaultCollection,
+		onChange: (data) => {
+			canvas.controls.pointer.updateAll();
+		}
 	});
 
-	// game.settings.register(CONSTANTS.MODULE_NAME, "spellFeats", {
-	// 	name: "Color Spell and Feature Names on item detail",
-	// 	hint: "",
+	// game.settings.register('pointer', 'version', {
+	// 	name: "Pointer Version",
 	// 	scope: "world",
-	// 	config: true,
-	// 	type: Boolean,
-	// 	default: true
+	// 	config: false,
+	// 	default: "0",
+	// 	type: String
 	// });
-
-	game.settings.register(CONSTANTS.MODULE_NAME, "uncommon", {
-		name: `${CONSTANTS.MODULE_NAME}.setting.uncommon.name`,
-		hint: `${CONSTANTS.MODULE_NAME}.setting.uncommon.hint`,
-		scope: "client",
-		type: String,
-		default: "#008000",
-		config: true,
-		onChange: refresh
-	});
-	game.settings.register(CONSTANTS.MODULE_NAME, "uncommonExternal", {
-		name: `${CONSTANTS.MODULE_NAME}.setting.uncommonExternal.name`,
-		hint: `${CONSTANTS.MODULE_NAME}.setting.uncommonExternal.hint`,
-		scope: "client",
-		type: String,
-		default: "#006400",
-		config: true,
-		onChange: refresh
-	});
-	game.settings.register(CONSTANTS.MODULE_NAME, "rare", {
-		name: `${CONSTANTS.MODULE_NAME}.setting.rare.name`,
-		hint: `${CONSTANTS.MODULE_NAME}.setting.rare.hint`,
-		scope: "client",
-		type: String,
-		default: "#0000FF",
-		config: true,
-		onChange: refresh
-	});
-	game.settings.register(CONSTANTS.MODULE_NAME, "rareExternal", {
-		name: `${CONSTANTS.MODULE_NAME}.setting.rareExternal.name`,
-		hint: `${CONSTANTS.MODULE_NAME}.setting.rareExternal.hint`,
-		scope: "client",
-		type: String,
-		default: "#191970",
-		config: true,
-		onChange: refresh
-	});
-	game.settings.register(CONSTANTS.MODULE_NAME, "veryrare", {
-		name: `${CONSTANTS.MODULE_NAME}.setting.veryrare.name`,
-		hint: `${CONSTANTS.MODULE_NAME}.setting.veryrare.hint`,
-		scope: "client",
-		type: String,
-		default: "#800080",
-		config: true,
-		onChange: refresh
-	});
-	game.settings.register(CONSTANTS.MODULE_NAME, "veryrareExternal", {
-		name: `${CONSTANTS.MODULE_NAME}.setting.veryrareExternal.name`,
-		hint: `${CONSTANTS.MODULE_NAME}.setting.veryrareExternal.hint`,
-		scope: "client",
-		type: String,
-		default: "#4B0082",
-		config: true,
-		onChange: refresh
-	});
-	game.settings.register(CONSTANTS.MODULE_NAME, "legendary", {
-		name: `${CONSTANTS.MODULE_NAME}.setting.legendary.name`,
-		hint: `${CONSTANTS.MODULE_NAME}.setting.legendary.hint`,
-		scope: "client",
-		type: String,
-		default: "#FFA500",
-		config: true,
-		onChange: refresh
-	});
-	game.settings.register(CONSTANTS.MODULE_NAME, "legendaryExternal", {
-		name: `${CONSTANTS.MODULE_NAME}.setting.legendaryExternal.name`,
-		hint: `${CONSTANTS.MODULE_NAME}.setting.legendaryExternal.hint`,
-		scope: "client",
-		type: String,
-		default: "#D2691E",
-		config: true,
-		onChange: refresh
-	});
-	game.settings.register(CONSTANTS.MODULE_NAME, "artifact", {
-		name: `${CONSTANTS.MODULE_NAME}.setting.artifact.name`,
-		hint: `${CONSTANTS.MODULE_NAME}.setting.artifact.hint`,
-		scope: "client",
-		type: String,
-		default: "#D2691E",
-		config: true,
-		onChange: refresh
-	});
-	game.settings.register(CONSTANTS.MODULE_NAME, "artifactExternal", {
-		name: `${CONSTANTS.MODULE_NAME}.setting.artifactExternal.name`,
-		hint: `${CONSTANTS.MODULE_NAME}.setting.artifactExternal.hint`,
-		scope: "client",
-		type: String,
-		default: "#91450e",
-		config: true,
-		onChange: refresh
-	});
-	game.settings.register(CONSTANTS.MODULE_NAME, "spell", {
-		name: `${CONSTANTS.MODULE_NAME}.setting.spell.name`,
-		hint: `${CONSTANTS.MODULE_NAME}.setting.spell.hint`,
-		scope: "client",
-		type: String,
-		default: "#4a8396" /*#add8e6*/,
-		config: true,
-		onChange: refresh
-	});
-	game.settings.register(CONSTANTS.MODULE_NAME, "spellExternal", {
-		name: `${CONSTANTS.MODULE_NAME}.setting.spellExternal.name`,
-		hint: `${CONSTANTS.MODULE_NAME}.setting.spellExternal.hint`,
-		scope: "client",
-		type: String,
-		default: "#0000ff",
-		config: true,
-		onChange: refresh
-	});
-	game.settings.register(CONSTANTS.MODULE_NAME, "feat", {
-		name: `${CONSTANTS.MODULE_NAME}.setting.feat.name`,
-		hint: `${CONSTANTS.MODULE_NAME}.setting.feat.hint`,
-		scope: "client",
-		type: String,
-		default: "#48d1cc",
-		config: true,
-		onChange: refresh
-	});
-	game.settings.register(CONSTANTS.MODULE_NAME, "featExternal", {
-		name: `${CONSTANTS.MODULE_NAME}.setting.featExternal.name`,
-		hint: `${CONSTANTS.MODULE_NAME}.setting.featExternal.hint`,
-		scope: "client",
-		type: String,
-		default: "#0e5c59",
-		config: true,
-		onChange: refresh
-	});
+	// if (game.user.isGM) {
+	// 	const version = game.settings.get('pointer', 'version');
+	// 	// only do this once after upgrading to 2.0.0
+	// 	if (isNewerVersion("2.0.0", version)) {
+	// 		new (PointerSettingsMenu)().render(true);
+	// 	}
+	// 	// Update version to newest mod version - every time
+	// 	if (isNewerVersion(game.modules.get('pointer').version, version)) {
+	// 		game.settings.set('pointer', 'version', game.modules.get('pointer').version);
+	// 	}
+	// }
 
 	// ========================================================================
-	game.settings.register(CONSTANTS.MODULE_NAME, "debug", {
-		name: `${CONSTANTS.MODULE_NAME}.setting.debug.name`,
-		hint: `${CONSTANTS.MODULE_NAME}.setting.debug.hint`,
+	game.settings.register(CONSTANTS.MODULE_ID, "debug", {
+		name: `${CONSTANTS.MODULE_ID}.setting.debug.name`,
+		hint: `${CONSTANTS.MODULE_ID}.setting.debug.hint`,
 		scope: "client",
 		config: true,
 		default: false,
@@ -188,19 +66,19 @@ class ResetSettingsDialog extends FormApplication {
 		super(...args);
 		//@ts-ignore
 		return new Dialog({
-			title: game.i18n.localize(`${CONSTANTS.MODULE_NAME}.dialogs.resetsettings.title`),
+			title: game.i18n.localize(`${CONSTANTS.MODULE_ID}.dialogs.resetsettings.title`),
 			content:
 				'<p style="margin-bottom:1rem;">' +
-				game.i18n.localize(`${CONSTANTS.MODULE_NAME}.dialogs.resetsettings.content`) +
+				game.i18n.localize(`${CONSTANTS.MODULE_ID}.dialogs.resetsettings.content`) +
 				"</p>",
 			buttons: {
 				confirm: {
 					icon: '<i class="fas fa-check"></i>',
-					label: game.i18n.localize(`${CONSTANTS.MODULE_NAME}.dialogs.resetsettings.confirm`),
+					label: game.i18n.localize(`${CONSTANTS.MODULE_ID}.dialogs.resetsettings.confirm`),
 					callback: async () => {
 						const worldSettings = game.settings.storage
 							?.get("world")
-							?.filter((setting) => setting.key.startsWith(`${CONSTANTS.MODULE_NAME}.`));
+							?.filter((setting) => setting.key.startsWith(`${CONSTANTS.MODULE_ID}.`));
 						for (let setting of worldSettings) {
 							console.log(`Reset setting '${setting.key}'`);
 							await setting.delete();
@@ -210,7 +88,7 @@ class ResetSettingsDialog extends FormApplication {
 				},
 				cancel: {
 					icon: '<i class="fas fa-times"></i>',
-					label: game.i18n.localize(`${CONSTANTS.MODULE_NAME}.dialogs.resetsettings.cancel`)
+					label: game.i18n.localize(`${CONSTANTS.MODULE_ID}.dialogs.resetsettings.cancel`)
 				}
 			},
 			default: "cancel"

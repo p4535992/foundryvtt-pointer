@@ -1,6 +1,6 @@
 const CONSTANTS = {
-	MODULE_NAME: "rarity-colors",
-	PATH: `modules/rarity-colors/`
+	MODULE_NAME: "pointer",
+	PATH: `modules/pointer/`
 };
-CONSTANTS.PATH = `modules/${CONSTANTS.MODULE_NAME}/`;
+CONSTANTS.PATH = `modules/${CONSTANTS.MODULE_ID}/`;
 export default CONSTANTS;
