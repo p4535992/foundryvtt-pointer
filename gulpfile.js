@@ -4,7 +4,7 @@
 /**
  * This is important for the bundle.js
  */
-const mainFilePath = `src/dae.ts`; // MOD 4535992
+const mainFilePath = `src/module.js`; // MOD 4535992
 
 const gulp = require(`gulp`);
 const fs = require(`fs`);
