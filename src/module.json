@@ -57,25 +57,25 @@
     {
       "lang": "en",
       "name": "English",
-      "path": "lang/en.json"
+      "path": "languages/en.json"
     },
     {
       "lang": "es",
       "name": "Español",
-      "path": "lang/es.json"
+      "path": "languages/es.json"
     },
     {
       "lang": "de",
       "name": "Deutsch",
-      "path": "lang/de.json"
+      "path": "languages/de.json"
     },
     {
       "lang": "ja",
       "name": "日本語",
-      "path": "lang/ja.json"
+      "path": "languages/ja.json"
     }
   ],
-  "scripts": ["greensock/dist/gsap.min.js"],
+  "scripts": ["greensock/esm/all.js"],
   "esmodules": ["module.js"],
   "styles": ["styles/pointer.css", "styles/pointer-settings.css"],
   "packs": [],

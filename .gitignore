@@ -122,3 +122,4 @@ foundry.js
 /package-lock.json
 /doc/backup/tidy5e-sheet-old
 /doc/backup/tidy5e-sheet-new
+/src/scripts/greensock

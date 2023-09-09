@@ -1,5 +1,5 @@
 const CONSTANTS = {
-  MODULE_NAME: "pointer",
+  MODULE_ID: "pointer",
   PATH: `modules/pointer/`,
 };
 CONSTANTS.PATH = `modules/${CONSTANTS.MODULE_ID}/`;

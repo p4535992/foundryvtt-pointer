@@ -1,6 +1,6 @@
 import { debug, warn } from "./lib/lib.js";
 import CONSTANTS from "./constants.js";
-import { initSettingsMenu } from "./settings/index.js";
+import { initSettingsMenu } from "./settings/settings-menu.js";
 import { PointerContainer } from "./pixi/container.js";
 import initControls from "./keybindings.js";
 

@@ -10,7 +10,8 @@ import { viteStaticCopy } from 'vite-plugin-static-copy';
 import cleanPlugin from 'vite-plugin-clean';
 import { normalizePath } from 'vite';
 import path from 'path';
-import { run } from 'vite-plugin-run'
+import { run } from 'vite-plugin-run';
+
 
 // ATTENTION!
 // Please modify the below variables: s_PACKAGE_ID and s_SVELTE_HASH_ID appropriately.
