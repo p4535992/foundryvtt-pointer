@@ -63,6 +63,18 @@ Due to core FVTT limitations it is currently only possible for users allowed to 
 This repository is no longer receiving active attention. In my opinion this module is complete and stable, and i'll be focusing my efforts on other modules/stuff. PR's are welcome and i'll try to investigate bugs and keep this module up to date with Foundry, when i find the time to do so.
 That said, feel free to keep suggesting features, if i find something interesting i may end up implementing it.
 
+# Build fast note
+
+### Prepare a release
+
+In the 99% of the case for prepare a release you must:
+
+- Launch `npm run build` this will generate all the code under the `dist` folder.
+- Launch `npm package` for zip all the contents on the `dist` folder, and build the zip file with the correct name under the  `package` folder.
+
+### Developing a release
+
+- Use `npm run build:watch` and `npm run build:link` and check some tutorial online
 
 # Build
 
@@ -71,18 +83,18 @@ That said, feel free to keep suggesting features, if i find something interestin
 ```bash
 npm install
 ```
-
-### dev
-
-`dev` will let you develop you own code with hot reloading on the browser
-
-```bash
-npm run dev
-```
-
 ## npm build scripts
 
 ### build
+
+will build the code and copy all necessary assets into the dist folder and make a symlink to install the result into your foundry data; create a
+`foundryconfig.json` file with your Foundry Data path.
+
+```json
+{
+  "dataPath": "~/.local/share/FoundryVTT/"
+}
+```
 
 `build` will build and set up a symlink between `dist` and your `dataPath`.
 
@@ -90,12 +102,24 @@ npm run dev
 npm run build
 ```
 
-### build-watch
+### NOTE:
 
-`build-watch` will build and watch for changes, rebuilding automatically.
+You don't need to build the `foundryconfig.json` file you can just copy the content of the `dist` folder on the module folder under `modules` of Foundry
+
+### build:watch
+
+`build:watch` will build and watch for changes, rebuilding automatically.
 
 ```bash
-npm run build-watch
+npm run build:watch
+```
+
+### clean
+
+`clean` will remove all contents in the dist folder (but keeps the link from build:install).
+
+```bash
+npm run clean
 ```
 
 ### prettier-format
@@ -103,8 +127,17 @@ npm run build-watch
 `prettier-format` launch the prettier plugin based on the configuration [here](./.prettierrc)
 
 ```bash
-npm run-script prettier-format
+npm run prettier-format
 ```
+
+### package
+
+`package` generates a zip file containing the contents of the dist folder generated previously with the `build` command. Useful for those who want to manually load the module or want to create their own release
+
+```bash
+npm run package
+```
+
 
 ## [Changelog](./CHANGELOG.md)
 

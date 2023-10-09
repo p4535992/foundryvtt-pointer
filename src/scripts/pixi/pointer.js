@@ -1,5 +1,3 @@
-import { TimelineMax } from "/scripts/greensock/esm/all.js";
-
 export class Pointer extends PIXI.Container {
   constructor(data = {}, userId = game.userId, gridSize = canvas.grid.size) {
     super();
