@@ -10,8 +10,7 @@ import { viteStaticCopy } from 'vite-plugin-static-copy';
 import cleanPlugin from 'vite-plugin-clean';
 import { normalizePath } from 'vite';
 import path from 'path';
-import { run } from 'vite-plugin-run';
-
+import { run } from 'vite-plugin-run'
 
 // ATTENTION!
 // Please modify the below variables: s_PACKAGE_ID and s_SVELTE_HASH_ID appropriately.
@@ -62,8 +61,8 @@ export default () => {
 
     css: {
       // Creates a standard configuration for PostCSS with autoprefixer & postcss-preset-env.
-      postcss: postcssConfig({
-        compress: s_COMPRESS,
+      postcss: postcssConfig({ 
+        compress: s_COMPRESS, 
         sourceMap: s_SOURCEMAPS
       }),
     },
@@ -93,7 +92,7 @@ export default () => {
         "/socket.io": { target: "ws://127.0.0.1:30000", ws: true },
       },
     },
-
+    
     build: {
       outDir: normalizePath( path.resolve(__dirname, `./dist/${s_MODULE_ID}`)), // __dirname,
       emptyOutDir: false,
@@ -161,6 +160,10 @@ export default () => {
             src: normalizePath(path.resolve(__dirname, './src/module.json')),
             dest: normalizePath(path.resolve(__dirname, `./dist/${s_MODULE_ID}/`)),
           },
+		  {
+            src: normalizePath(path.resolve(__dirname, './src/scripts/libs')) + '/[!.]*',
+            dest: normalizePath(path.resolve(__dirname, `./dist/${s_MODULE_ID}/scripts/libs`)),
+          },
         ],
       }),
       svelte({
@@ -178,14 +181,14 @@ export default () => {
           if (warning.message.includes(`<a> element should have an href attribute`)) {
             return;
           }
-
+          
           // Let Rollup handle all other warnings normally.
           handler(warning);
         },
       }),
 
       resolve(s_RESOLVE_CONFIG), // Necessary when bundling npm-linked packages.
-
+      
       // When s_TYPHONJS_MODULE_LIB is true transpile against the Foundry module version of TRL.
       s_TYPHONJS_MODULE_LIB && typhonjsRuntime(),
 

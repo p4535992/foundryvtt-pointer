@@ -35,7 +35,7 @@ To install this module manually:
 4.  Click 'Install' and wait for installation to complete
 5.  Don't forget to enable the module in game using the "Manage Module" button
 
-![](doc/pnp.gif)
+![](wiki/doc/pnp.gif)
 
 # Feature Overview
 
@@ -48,7 +48,7 @@ The pointer, pings and buttons are customizable using the settings menu. Here yo
 To make setup easier for players the GM can decide to force his settings onto all players! (This will not stop them from changing those afterwards.)
 
 ### Creating Pointers and Pings
-![](doc/design_studio.webp)
+![](wiki/doc/design_studio.webp)
 GM View of the design studio (1).
 2. Here you can which custom pointer you want to use as pointer or as ping. Just click on one of the checkboxes. The GM can also create new custom pointer or delete any existing.
 3. A small preview of your custom pointer. the red X in the center is the location of your mouse pointer when displaying the pointer on the canvas. This view help to properly position your chosen image relative to your mouse pointer.
@@ -56,7 +56,7 @@ GM View of the design studio (1).
 4. Configuration panel for your pointer. Configure some basic transformations, like position, rotation and add some animations.
 
 Due to core FVTT limitations it is currently only possible for users allowed to edit world settings to create and delete custom pointer. (Screenshot below)
-![](doc/global_settings.webp)
+![](wiki/doc/global_settings.webp)
 *Beware that this allows them to edit most FVTT settings. It is up to you, the GM, whether you trust your players with that much power!*
 
 ## Important Information : Maintenance Mode

@@ -1,6 +1,5 @@
 import { i18n } from "./lib/lib.js";
 import CONSTANTS from "./constants.js";
-import { refresh } from "./main.js";
 import { PointerSettingsMenu } from "./settings/settings-menu.js";
 export const registerSettings = function () {
   game.settings.register("pointer", "default", {
