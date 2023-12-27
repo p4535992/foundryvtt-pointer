@@ -48,7 +48,9 @@ The pointer, pings and buttons are customizable using the settings menu. Here yo
 To make setup easier for players the GM can decide to force his settings onto all players! (This will not stop them from changing those afterwards.)
 
 ### Creating Pointers and Pings
+
 ![](wiki/doc/design_studio.webp)
+
 GM View of the design studio (1).
 2. Here you can which custom pointer you want to use as pointer or as ping. Just click on one of the checkboxes. The GM can also create new custom pointer or delete any existing.
 3. A small preview of your custom pointer. the red X in the center is the location of your mouse pointer when displaying the pointer on the canvas. This view help to properly position your chosen image relative to your mouse pointer.
@@ -56,25 +58,14 @@ GM View of the design studio (1).
 4. Configuration panel for your pointer. Configure some basic transformations, like position, rotation and add some animations.
 
 Due to core FVTT limitations it is currently only possible for users allowed to edit world settings to create and delete custom pointer. (Screenshot below)
+
 ![](wiki/doc/global_settings.webp)
+
 *Beware that this allows them to edit most FVTT settings. It is up to you, the GM, whether you trust your players with that much power!*
 
 ## Important Information : Maintenance Mode
 This repository is no longer receiving active attention. In my opinion this module is complete and stable, and i'll be focusing my efforts on other modules/stuff. PR's are welcome and i'll try to investigate bugs and keep this module up to date with Foundry, when i find the time to do so.
 That said, feel free to keep suggesting features, if i find something interesting i may end up implementing it.
-
-# Build fast note
-
-### Prepare a release
-
-In the 99% of the case for prepare a release you must:
-
-- Launch `npm run build` this will generate all the code under the `dist` folder.
-- Launch `npm package` for zip all the contents on the `dist` folder, and build the zip file with the correct name under the  `package` folder.
-
-### Developing a release
-
-- Use `npm run build:watch` and `npm run build:link` and check some tutorial online
 
 # Build
 
@@ -83,18 +74,18 @@ In the 99% of the case for prepare a release you must:
 ```bash
 npm install
 ```
+
+### dev
+
+`dev` will let you develop you own code with hot reloading on the browser
+
+```bash
+npm run dev
+```
+
 ## npm build scripts
 
 ### build
-
-will build the code and copy all necessary assets into the dist folder and make a symlink to install the result into your foundry data; create a
-`foundryconfig.json` file with your Foundry Data path.
-
-```json
-{
-  "dataPath": "~/.local/share/FoundryVTT/"
-}
-```
 
 `build` will build and set up a symlink between `dist` and your `dataPath`.
 
@@ -102,24 +93,12 @@ will build the code and copy all necessary assets into the dist folder and make 
 npm run build
 ```
 
-### NOTE:
+### build-watch
 
-You don't need to build the `foundryconfig.json` file you can just copy the content of the `dist` folder on the module folder under `modules` of Foundry
-
-### build:watch
-
-`build:watch` will build and watch for changes, rebuilding automatically.
+`build-watch` will build and watch for changes, rebuilding automatically.
 
 ```bash
-npm run build:watch
-```
-
-### clean
-
-`clean` will remove all contents in the dist folder (but keeps the link from build:install).
-
-```bash
-npm run clean
+npm run build-watch
 ```
 
 ### prettier-format
@@ -127,15 +106,21 @@ npm run clean
 `prettier-format` launch the prettier plugin based on the configuration [here](./.prettierrc)
 
 ```bash
-npm run prettier-format
+npm run-script prettier-format
 ```
 
-### package
+### lint and lint:fix
 
-`package` generates a zip file containing the contents of the dist folder generated previously with the `build` command. Useful for those who want to manually load the module or want to create their own release
+`lint` launch the eslint process based on the configuration [here](./.eslintrc.json)
 
 ```bash
-npm run package
+npm run-script lint
+```
+
+`lint:fix` launch the eslint process with the fix argument
+
+```bash
+npm run-script lint:fix
 ```
 
 
