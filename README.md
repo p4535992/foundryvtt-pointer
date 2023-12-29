@@ -63,9 +63,9 @@ Due to core FVTT limitations it is currently only possible for users allowed to 
 
 *Beware that this allows them to edit most FVTT settings. It is up to you, the GM, whether you trust your players with that much power!*
 
-## Important Information : Maintenance Mode
+~~## Important Information : Maintenance Mode
 This repository is no longer receiving active attention. In my opinion this module is complete and stable, and i'll be focusing my efforts on other modules/stuff. PR's are welcome and i'll try to investigate bugs and keep this module up to date with Foundry, when i find the time to do so.
-That said, feel free to keep suggesting features, if i find something interesting i may end up implementing it.
+That said, feel free to keep suggesting features, if i find something interesting i may end up implementing it.~~
 
 # Build
 
