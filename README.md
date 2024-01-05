@@ -140,7 +140,7 @@ This package is under an [MIT](LICENSE) and the [Foundry Virtual Tabletop Limite
 
 ## Acknowledgements
 
-- Thank you to [Moerill](https://github.com/Moerill) for the module [Pointer (fork farling42)](https://github.com/Moerill/fvtt-pointer) original project
+- Thank you to [Moerill](https://github.com/Moerill) for the module [Pointer](https://github.com/Moerill/fvtt-pointer) original project
 - Thank you to [farling42](https://github.com/farling42) for the module [Pointer (fork farling42)](https://github.com/farling42/fvtt-pointer) for bug fix v11
 
 ## Attribution
