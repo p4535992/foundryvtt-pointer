@@ -24,7 +24,7 @@ Hotkeys, pings, pointer, everything customizable!
 As GM you can also move your players view to your pin on demand.
 
 ## WHY THIS MODULE IS IN BETA ? Don't get too excited, I just took the module maintenance and did some minor bug fixing, the module requires considerable rewriting especially with the new API of v12
-## There is a open commission on the Discord League Server for anyone interested on help to save this module form the void.
+## There is a open commission on the Discord League Server for anyone interested on help to save this module from the void.
 
 ## Installation
 
