@@ -136,9 +136,13 @@ function checkKey(ev, obj) {
 }
 
 function onPointerDown(ev) {
-  if (ev.repeat) return;
-  if (!checkKey(ev, controls.pointer) || controls.pointer.active) return;
-  // console.log('Pointer | Key down', ev);
+  if (ev.repeat) {
+    return;
+  }
+  if (!checkKey(ev, controls.pointer) || controls.pointer.active) {
+    return;
+  }
+  console.log("Pointer | Key down", ev);
   controls.pointer.active = true;
   canvas.controls.pointer.start();
 }
@@ -146,10 +150,14 @@ function onPointerDown(ev) {
 function onPointerUp(ev) {
   // Be a bit more liberal here.
   // since the checkKey method doesn't work as good for key up events
-  if (ev.key && ev.key.toUpperCase() !== controls.pointer.key.toUpperCase()) return;
+  if (ev.key && ev.key.toUpperCase() !== controls.pointer.key.toUpperCase()) {
+    return;
+  }
   // handle mouse interaction differently.. again, so when both are bound to mouse, the pointer does not get deactivated
-  else if (ev.button && !checkKey(ev, controls.pointer)) return;
-  // console.log('Pointer | Key up', ev);
+  else if (ev.button && !checkKey(ev, controls.pointer)) {
+    return;
+  }
+  console.log("Pointer | Key up", ev);
   controls.pointer.active = false;
   canvas.controls.pointer.stop();
 }

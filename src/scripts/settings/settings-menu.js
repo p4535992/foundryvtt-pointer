@@ -327,7 +327,7 @@ export class PointerSettingsMenu extends FormApplication {
     });
 
     chooser.querySelectorAll("input").forEach((e) =>
-      e.addEventListener("change", (ev) => {
+      e.addEventListener("change", async (ev) => {
         ev.preventDefault();
         ev.stopPropagation();
         const target = ev.currentTarget;
@@ -337,8 +337,24 @@ export class PointerSettingsMenu extends FormApplication {
         for (let checkbox of checkboxes) {
           checkbox.checked = false;
         }
+
+        await this._onSubmit(ev);
+        updateCanvas();
       })
     );
+
+    const updateCanvas = () => {
+      const pointerId = this.userData.pointer;
+      const collection = game.settings.get("pointer", "collection");
+      const pointerData = collection.find((e) => e.id === pointerId) || collection[0];
+      pointerData.position = new PIXI.Point(this._pixiApp.view.width / 2, this._pixiApp.view.height / 2);
+
+      // Removing last pointer
+      this._pixiApp.stage.removeChild(this._pixiApp.stage.children[2]);
+
+      const pointer = new Pointer(pointerData, game.user.id, this.options.gridSize);
+      this._pixiApp.stage.addChild(pointer);
+    };
 
     if (!game.user.isGM) return;
 
@@ -492,7 +508,11 @@ export class PointerSettingsMenu extends FormApplication {
       selectedPointer = data.collection[0];
       userSettings.pointer = selectedPointer.id;
     }
-    selectedPointer.selectedAsPointer = true;
+
+    data.collection.forEach((pointer) => {
+      pointer.selectedAsPointer = pointer.id === userSettings.pointer;
+    });
+
     data.pixi = selectedPointer;
 
     let selectedPing = data.collection.find((e) => e.id === userSettings.ping);
@@ -500,6 +520,11 @@ export class PointerSettingsMenu extends FormApplication {
       selectedPing = data.collection[1] || data.collection[0];
       userSettings.ping = selectedPing.id;
     }
+
+    data.collection.forEach((ping) => {
+      ping.selectedAsPing = ping.id === userSettings.ping;
+    });
+
     selectedPing.selectedAsPing = true;
 
     data.isGM = game.user.isGM;
@@ -509,10 +534,10 @@ export class PointerSettingsMenu extends FormApplication {
   async _updateObject(event, formData) {
     const data = expandObject(formData);
     if (this.canConfigure) {
-      // this.pointer.save();
+      this.pointer.save();
       data.pointer.img = this.pointer.data.img;
       const pointer = new Pointer(data.pointer);
-      pointer.save();
+      this.pointer.save(data.pointer);
     }
     if (event.currentTarget?.closest(".designer")) return;
     let settings = duplicate(this.userData);
@@ -586,6 +611,12 @@ export class PointerSettingsMenu extends FormApplication {
         await this.render();
         this._selectPointer(pointerData);
       }
+
+      // Update only the pointer object with the changes
+      const collection = game.settings.get("pointer", "collection");
+      const pointerId = this.userData.pointer;
+      const pointerData = collection.find((e) => e.id === pointerId);
+      pointerData[prop] = val; // Apply the changes to the pointer data
     });
   }
 
