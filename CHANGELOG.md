@@ -1,7 +1,11 @@
-### v2.5.1
+### v2.6.1 (BETA)
 
 - Sync with fork from jravolio: https://github.com/Moerill/fvtt-pointer/compare/master...jravolio:fvtt-pointer:master
 - Add debug settings and logger utility
+
+### v2.6.0 (BETA)
+
+- New maintainer and new structure of the module
 
 ### v2.5.0
 
