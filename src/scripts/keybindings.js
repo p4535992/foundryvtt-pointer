@@ -1,8 +1,9 @@
 let controls;
 import CONSTANTS from "./constants.js";
+import Logger from "./lib/Logger.js";
 import { PointerSettingsMenu } from "./settings/settings-menu.js";
 export default function init() {
-    // console.log('Pointer | Initializing controls');
+    Logger.debug("Pointer Initializing controls");
     const settings = mergeObject(
         PointerSettingsMenu.defaultSettings.controls,
         game.user.getFlag(CONSTANTS.MODULE_ID, CONSTANTS.FLAGS.SETTINGS)?.controls,
@@ -143,7 +144,7 @@ function onPointerDown(ev) {
     if (!checkKey(ev, controls.pointer) || controls.pointer.active) {
         return;
     }
-    console.log("Pointer | Key down", ev);
+    Logger.debug("Pointer Key down", ev);
     controls.pointer.active = true;
     canvas.controls.pointer.start();
 }
@@ -158,21 +159,29 @@ function onPointerUp(ev) {
     else if (ev.button && !checkKey(ev, controls.pointer)) {
         return;
     }
-    console.log("Pointer | Key up", ev);
+    Logger.debug("Pointer Key up", ev);
     controls.pointer.active = false;
     canvas.controls.pointer.stop();
 }
 
 function onPing(ev) {
-    if (controls.ping.pointerActive && !controls.pointer.active) return;
-    if (!checkKey(ev, controls.ping)) return;
-    // console.log('Pointer | on Ping ', ev);
+    if (controls.ping.pointerActive && !controls.pointer.active) {
+        return;
+    }
+    if (!checkKey(ev, controls.ping)) {
+        return;
+    }
+    Logger.debug("Pointer on Ping", ev);
     canvas.controls.pointer.ping();
 }
 
 function onForcePing(ev) {
-    if (controls.ping.pointerActive && !controls.pointer.active) return;
-    if (!checkKey(ev, controls.force)) return;
-    // console.log('Pointer | on Force Ping ', ev);
+    if (controls.ping.pointerActive && !controls.pointer.active) {
+        return;
+    }
+    if (!checkKey(ev, controls.force)) {
+        return;
+    }
+    Logger.debug("Pointer on Force Ping", ev);
     canvas.controls.pointer.ping({ force: true });
 }

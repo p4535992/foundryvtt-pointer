@@ -1,6 +1,7 @@
 import { Pointer } from "../pixi/pointer.js";
 import { getKey } from "../keybindings.js";
 import CONSTANTS from "../constants.js";
+import Logger from "../lib/Logger.js";
 
 export class PointerSettingsMenu extends FormApplication {
     static get defaultOptions() {
@@ -359,11 +360,12 @@ export class PointerSettingsMenu extends FormApplication {
             this._pixiApp.stage.addChild(pointer);
         };
 
-        if (!game.user.isGM) return;
-
+        if (!game.user.isGM) {
+            return;
+        }
         html[0].querySelector(".pointer-apply-settings").addEventListener("click", async (ev) => {
             const settings = this.userData;
-            console.log(settings);
+            Logger.debug("Flag 'settings' updated :", settings);
             for (let user of game.users) {
                 await user.unsetFlag(CONSTANTS.MODULE_ID, CONSTANTS.FLAGS.SETTINGS);
                 await user.setFlag(CONSTANTS.MODULE_ID, CONSTANTS.FLAGS.SETTINGS, settings);
@@ -389,7 +391,9 @@ export class PointerSettingsMenu extends FormApplication {
 
     async _onClickName(ev) {
         const li = ev.target.closest(".pointer-selection");
-        if (this.canConfigure) await this.pointer.save();
+        if (this.canConfigure) {
+            await this.pointer.save();
+        }
         const pointerId = li.dataset.pointerId;
 
         const collection = game.settings.get(CONSTANTS.MODULE_ID, "collection");
@@ -402,15 +406,20 @@ export class PointerSettingsMenu extends FormApplication {
 
         const designer = this.form.querySelector(".designer");
         const flatData = flattenObject(pointerData);
-        console.log(flatData);
+        Logger.debug("Flatdata updated:", flatData);
         for (let key of Object.keys(flatData)) {
             const inp = designer.querySelector(`input[name="pointer.${key}"]`);
-            if (!inp) continue;
-            if (inp.type === "checkbox") inp.checked = flatData[key];
-            else if (inp.type === "range") {
+            if (!inp) {
+                continue;
+            }
+            if (inp.type === "checkbox") {
+                inp.checked = flatData[key];
+            } else if (inp.type === "range") {
                 inp.value = flatData[key];
                 inp.parentNode.querySelector(".range-value").innerText = flatData[key];
-            } else inp.value = flatData[key];
+            } else {
+                inp.value = flatData[key];
+            }
         }
     }
 
@@ -463,11 +472,21 @@ export class PointerSettingsMenu extends FormApplication {
 
     _getMetaKeys(ev) {
         let keys = [];
-        if (ev.shiftKey) keys.push("Shift");
-        if (ev.ctrlKey) keys.push("Ctrl");
-        if (ev.altKey) keys.push("Alt");
-        if (ev.metaKey) keys.push("Meta");
-        if (keys.length > 0) return keys.join(" + ") + " + ";
+        if (ev.shiftKey) {
+            keys.push("Shift");
+        }
+        if (ev.ctrlKey) {
+            keys.push("Ctrl");
+        }
+        if (ev.altKey) {
+            keys.push("Alt");
+        }
+        if (ev.metaKey) {
+            keys.push("Meta");
+        }
+        if (keys.length > 0) {
+            return keys.join(" + ") + " + ";
+        }
         return "";
     }
 
@@ -545,7 +564,9 @@ export class PointerSettingsMenu extends FormApplication {
             const pointer = new Pointer(data.pointer);
             this.pointer.save(data.pointer);
         }
-        if (event.currentTarget?.closest(".designer")) return;
+        if (event.currentTarget?.closest(".designer")) {
+            return;
+        }
         let settings = duplicate(this.userData);
         settings = mergeObject(settings, data.user);
         const chooser = this.form.querySelector(".chooser");

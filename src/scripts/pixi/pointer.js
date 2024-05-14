@@ -15,12 +15,15 @@ export class Pointer extends PIXI.Container {
     }
 
     async draw(newData = this.data) {
-        if (this._drawing) return;
+        if (this._drawing) {
+            return;
+        }
         this._drawing = true;
         const data = this.data;
         if (newData.img) {
-            if (this.sprite) this.sprite.destroy();
-
+            if (this.sprite) {
+                this.sprite.destroy();
+            }
             const tex = await loadTexture(data.img);
             this.sprite = this.addChild(new PIXI.Sprite(tex));
 
@@ -63,15 +66,20 @@ export class Pointer extends PIXI.Container {
         }
 
         if (newData.tint) {
-            if (this.data.tint.useUser) this.sprite.tint = Number("0x" + game.users.get(this.userId).color.slice(1));
-            else this.sprite.tint = Number("0x" + data.tint.color.slice(1));
+            if (this.data.tint.useUser) {
+                this.sprite.tint = Number("0x" + game.users.get(this.userId).color.slice(1));
+            } else {
+                this.sprite.tint = Number("0x" + data.tint.color.slice(1));
+            }
         }
 
         if (newData.animations) {
             this.animations = newData.animations;
-            if (this.timeline) this.timeline.clear();
-            else this.timeline = new TimelineMax();
-
+            if (this.timeline) {
+                this.timeline.clear();
+            } else {
+                this.timeline = new TimelineMax();
+            }
             if (this.animations?.rotation?.use) {
                 const rotData = this.animations.rotation;
                 const min = rotData.min,

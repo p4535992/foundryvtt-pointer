@@ -1,5 +1,5 @@
-import { i18n } from "./lib/lib.js";
 import CONSTANTS from "./constants.js";
+import Logger from "./lib/Logger.js";
 import { PointerSettingsMenu } from "./settings/settings-menu.js";
 export const registerSettings = function () {
     game.settings.register(CONSTANTS.MODULE_ID, "default", {
@@ -62,9 +62,8 @@ export const registerSettings = function () {
 };
 class ResetSettingsDialog extends FormApplication {
     constructor(...args) {
-        //@ts-ignore
         super(...args);
-        //@ts-ignore
+
         return new Dialog({
             title: game.i18n.localize(`${CONSTANTS.MODULE_ID}.dialogs.resetsettings.title`),
             content:
@@ -80,7 +79,7 @@ class ResetSettingsDialog extends FormApplication {
                             ?.get("world")
                             ?.filter((setting) => setting.key.startsWith(`${CONSTANTS.MODULE_ID}.`));
                         for (let setting of worldSettings) {
-                            console.log(`Reset setting '${setting.key}'`);
+                            Logger.log(`Reset setting '${setting.key}'`);
                             await setting.delete();
                         }
                         //window.location.reload();

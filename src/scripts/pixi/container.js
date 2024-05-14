@@ -59,7 +59,9 @@ export class PointerContainer extends PIXI.Container {
 
     update(user) {
         const data = this._getUserPointerData(user);
-        if (!data.pointer || !data.ping) return;
+        if (!data.pointer || !data.ping) {
+            return;
+        }
         this._users[user.id].pointer.update(data.pointer);
         this._users[user.id].ping.update(data.ping);
     }
