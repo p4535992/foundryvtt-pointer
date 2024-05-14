@@ -365,8 +365,8 @@ export class PointerSettingsMenu extends FormApplication {
             const settings = this.userData;
             console.log(settings);
             for (let user of game.users) {
-                await user.unsetFlag(CONSTANTS.MODULE_ID, "settings");
-                await user.setFlag(CONSTANTS.MODULE_ID, "settings", settings);
+                await user.unsetFlag(CONSTANTS.MODULE_ID, CONSTANTS.FLAGS.SETTINGS);
+                await user.setFlag(CONSTANTS.MODULE_ID, CONSTANTS.FLAGS.SETTINGS, settings);
             }
             ui.notifications.info("Finished applying settings to all users!");
         });
@@ -478,7 +478,7 @@ export class PointerSettingsMenu extends FormApplication {
     get userData() {
         return mergeObject(
             PointerSettingsMenu.defaultSettings,
-            game.user.getFlag(CONSTANTS.MODULE_ID, "settings") || {},
+            game.user.getFlag(CONSTANTS.MODULE_ID, CONSTANTS.FLAGS.SETTINGS) || {},
         );
     }
 
@@ -555,7 +555,7 @@ export class PointerSettingsMenu extends FormApplication {
             .dataset.pointerId;
         settings.pointer = pointerId;
 
-        await game.user.setFlag(CONSTANTS.MODULE_ID, "settings", settings);
+        await game.user.setFlag(CONSTANTS.MODULE_ID, CONSTANTS.FLAGS.SETTINGS, settings);
         this.render();
     }
 

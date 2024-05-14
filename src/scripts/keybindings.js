@@ -5,7 +5,7 @@ export default function init() {
     // console.log('Pointer | Initializing controls');
     const settings = mergeObject(
         PointerSettingsMenu.defaultSettings.controls,
-        game.user.getFlag(CONSTANTS.MODULE_ID, "settings")?.controls,
+        game.user.getFlag(CONSTANTS.MODULE_ID, CONSTANTS.FLAGS.SETTINGS)?.controls,
     );
     removeListeners();
 

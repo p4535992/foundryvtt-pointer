@@ -50,7 +50,7 @@ export class PointerContainer extends PIXI.Container {
             game.settings.get(CONSTANTS.MODULE_ID, "collection") || PointerSettingsMenu.defaultCollection;
         const settings = mergeObject(
             PointerSettingsMenu.defaultSettings,
-            user.getFlag(CONSTANTS.MODULE_ID, "settings"),
+            user.getFlag(CONSTANTS.MODULE_ID, CONSTANTS.FLAGS.SETTINGS),
         );
         const pointerData = collection.find((e) => e.id === settings.pointer) || collection[0];
         const pingData = collection.find((e) => e.id === settings.ping) || collection[1] || collection[0];
