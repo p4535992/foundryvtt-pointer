@@ -312,10 +312,11 @@ export class PointerSettingsMenu extends FormApplication {
             target = ev.target.closest(".delete-pointer");
             if (target) {
                 const li = target.closest("li");
-                let collection = duplicate(game.settings.get(CONSTANTS.MODULE_ID, "collection"));
-                const pointerData = li.dataset.pointerId === this.pointer.id ? {} : duplicate(this.pointer.data);
+                let collection = foundry.utils.duplicate(game.settings.get(CONSTANTS.MODULE_ID, "collection"));
+                const pointerData =
+                    li.dataset.pointerId === this.pointer.id ? {} : foundry.utils.duplicate(this.pointer.data);
                 collection = collection.filter((e) => e.id !== li.dataset.pointerId);
-                if (collection.length === 0) collection = duplicate(this.constructor.defaultCollection);
+                if (collection.length === 0) collection = foundry.utils.duplicate(this.constructor.defaultCollection);
                 game.settings.set(CONSTANTS.MODULE_ID, "collection", collection).then(async (e) => {
                     await this._render();
                     this._selectPointer(pointerData);
@@ -376,11 +377,11 @@ export class PointerSettingsMenu extends FormApplication {
 
     async _addPointer() {
         const idx = Math.floor(Math.random() * PointerSettingsMenu.defaultCollection.length);
-        const pointerData = duplicate(PointerSettingsMenu.defaultCollection[idx]);
+        const pointerData = foundry.utils.duplicate(PointerSettingsMenu.defaultCollection[idx]);
         pointerData.name = "New";
         pointerData.id = randomID();
 
-        const collection = duplicate(game.settings.get(CONSTANTS.MODULE_ID, "collection"));
+        const collection = foundry.utils.duplicate(game.settings.get(CONSTANTS.MODULE_ID, "collection"));
         collection.push(pointerData);
         await game.settings.set(CONSTANTS.MODULE_ID, "collection", collection);
 
@@ -495,7 +496,7 @@ export class PointerSettingsMenu extends FormApplication {
     }
 
     get userData() {
-        return mergeObject(
+        return foundry.utils.mergeObject(
             PointerSettingsMenu.defaultSettings,
             game.user.getFlag(CONSTANTS.MODULE_ID, CONSTANTS.FLAGS.SETTINGS) || {},
         );
@@ -503,7 +504,7 @@ export class PointerSettingsMenu extends FormApplication {
 
     getData() {
         let data = super.getData();
-        data = mergeObject(data, this.userData);
+        data = foundry.utils.mergeObject(data, this.userData);
 
         data.canConfigure = this.canConfigure;
         // data.pixi = Pointer.defaultSettings;
@@ -522,7 +523,7 @@ export class PointerSettingsMenu extends FormApplication {
 
         data.collection = game.settings.get(CONSTANTS.MODULE_ID, "collection");
         if (data.canConfigure && !data.collection.length) {
-            data.collection = duplicate(this.constructor.defaultCollection);
+            data.collection = foundry.utils.duplicate(this.constructor.defaultCollection);
             game.settings.set(CONSTANTS.MODULE_ID, "collection", data.collection);
         }
 
@@ -557,7 +558,7 @@ export class PointerSettingsMenu extends FormApplication {
     }
 
     async _updateObject(event, formData) {
-        const data = expandObject(formData);
+        const data = foundry.utils.expandObject(formData);
         if (this.canConfigure) {
             this.pointer.save();
             data.pointer.img = this.pointer.data.img;
@@ -567,8 +568,8 @@ export class PointerSettingsMenu extends FormApplication {
         if (event.currentTarget?.closest(".designer")) {
             return;
         }
-        let settings = duplicate(this.userData);
-        settings = mergeObject(settings, data.user);
+        let settings = foundry.utils.duplicate(this.userData);
+        settings = foundry.utils.mergeObject(settings, data.user);
         const chooser = this.form.querySelector(".chooser");
         const pingId = chooser.querySelector('input[name="selectedAsPing"]:checked').closest("li").dataset.pointerId;
         settings.ping = pingId;

@@ -3,7 +3,7 @@ import CONSTANTS from "../constants";
 export class Pointer extends PIXI.Container {
     constructor(data = {}, userId = game.userId, gridSize = canvas.grid.size) {
         super();
-        this.data = duplicate(data); //{gridSize: data.gridSize};
+        this.data = foundry.utils.duplicate(data); //{gridSize: data.gridSize};
 
         this.userId = userId;
         this.gridSize = gridSize;
@@ -67,7 +67,11 @@ export class Pointer extends PIXI.Container {
 
         if (newData.tint) {
             if (this.data.tint.useUser) {
-                this.sprite.tint = Number("0x" + game.users.get(this.userId).color.slice(1));
+                if (foundry.utils.isNewerVersion(game.version, 12)) {
+                    this.sprite.tint = Number("0x" + game.users.get(this.userId).color.css.slice(1));
+                } else {
+                    this.sprite.tint = Number("0x" + game.users.get(this.userId).color.slice(1));
+                }
             } else {
                 this.sprite.tint = Number("0x" + data.tint.color.slice(1));
             }
@@ -116,17 +120,17 @@ export class Pointer extends PIXI.Container {
     }
 
     async update(udata) {
-        this.data = mergeObject(this.data, duplicate(udata));
-        this.draw(expandObject(udata));
+        this.data = foundry.utils.mergeObject(this.data, foundry.utils.duplicate(udata));
+        this.draw(foundry.utils.expandObject(udata));
 
         return;
     }
 
     async save() {
         // do update stuff here
-        const collection = duplicate(game.settings.get(CONSTANTS.MODULE_ID, "collection"));
+        const collection = foundry.utils.duplicate(game.settings.get(CONSTANTS.MODULE_ID, "collection"));
         let idx = collection.findIndex((e) => e.id === this.id);
-        const data = duplicate(this.data);
+        const data = foundry.utils.duplicate(this.data);
         delete data.position;
         collection[idx] = data;
         return game.settings.set(CONSTANTS.MODULE_ID, "collection", collection);

@@ -1,3 +1,7 @@
+### 2.6.2 (BETA)
+
+- Update manifest for v12 and some little bug fix ty to @farling42
+
 ### v2.6.1 (BETA)
 
 - Sync with fork from jravolio: https://github.com/Moerill/fvtt-pointer/compare/master...jravolio:fvtt-pointer:master

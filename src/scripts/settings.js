@@ -41,11 +41,11 @@ export const registerSettings = function () {
     // if (game.user.isGM) {
     // 	const version = game.settings.get(CONSTANTS.MODULE_ID, 'version');
     // 	// only do this once after upgrading to 2.0.0
-    // 	if (isNewerVersion("2.0.0", version)) {
+    // 	if (foundry.utils.isNewerVersion("2.0.0", version)) {
     // 		new (PointerSettingsMenu)().render(true);
     // 	}
     // 	// Update version to newest mod version - every time
-    // 	if (isNewerVersion(game.modules.get(CONSTANTS.MODULE_ID).version, version)) {
+    // 	if (foundry.utils.isNewerVersion(game.modules.get(CONSTANTS.MODULE_ID).version, version)) {
     // 		game.settings.set(CONSTANTS.MODULE_ID, 'version', game.modules.get(CONSTANTS.MODULE_ID).version);
     // 	}
     // }

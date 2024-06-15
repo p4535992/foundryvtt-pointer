@@ -48,7 +48,7 @@ export class PointerContainer extends PIXI.Container {
     _getUserPointerData(user) {
         const collection =
             game.settings.get(CONSTANTS.MODULE_ID, "collection") || PointerSettingsMenu.defaultCollection;
-        const settings = mergeObject(
+        const settings = foundry.utils.mergeObject(
             PointerSettingsMenu.defaultSettings,
             user.getFlag(CONSTANTS.MODULE_ID, CONSTANTS.FLAGS.SETTINGS),
         );
@@ -83,7 +83,7 @@ export class PointerContainer extends PIXI.Container {
         // return canvas.app.renderer.plugins.interaction.mouse.getLocalPosition(canvas.stage);
 
         // TODO is really ok ?
-        // if (isNewerVersion(game.version, 11)) {
+        // if (foundry.utils.isNewerVersion(game.version, 11)) {
         //   return canvas.mousePosition;
         // }
 

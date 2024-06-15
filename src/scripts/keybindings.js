@@ -4,7 +4,7 @@ import Logger from "./lib/Logger.js";
 import { PointerSettingsMenu } from "./settings/settings-menu.js";
 export default function init() {
     Logger.debug("Pointer Initializing controls");
-    const settings = mergeObject(
+    const settings = foundry.utils.mergeObject(
         PointerSettingsMenu.defaultSettings.controls,
         game.user.getFlag(CONSTANTS.MODULE_ID, CONSTANTS.FLAGS.SETTINGS)?.controls,
     );
