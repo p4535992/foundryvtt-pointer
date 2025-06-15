@@ -71,8 +71,7 @@
         "module.js"
     ],
     "styles": [
-        "styles/pointer.css",
-        "styles/pointer-settings.css"
+        "styles/pointer.css"
     ],
     "packs": [],
     "url": "https://github.com/p4535992/foundryvtt-pointer",
@@ -82,7 +81,7 @@
     "changelog": "https://github.com/p4535992/foundryvtt-pointer/blob/master/CHANGELOG.md",
     "bugs": "https://github.com/p4535992/foundryvtt-pointer/issues",
     "compatibility": {
-        "minimum": 12,
+        "minimum": 13,
         "verified": 13,
         "maximum": 13
     },

@@ -16,6 +16,9 @@
     mix-blend-mode: difference;
     color: #ddd;
 }
+.pointer-settings .content-tabs {
+    overflow-y: auto;
+}
 .pointer-settings .pointer-hint {
     flex: 0 100%;
     padding: 0 1em 0.3em 0;
@@ -40,7 +43,7 @@
 }
 .pointer-settings .pointer-info {
     font-weight: 900;
-    font-family: "Font Awesome 5 Free";
+    font-family: "Font Awesome 6 Pro";
     position: relative;
     top: -0.4em;
     -webkit-font-smoothing: antialiased;
@@ -84,7 +87,7 @@
 }
 .pointer-settings .form-checkbox-group input[type="checkbox"] + label:before {
     font-weight: 400;
-    font-family: "Font Awesome 5 Free";
+    font-family: "Font Awesome 6 Pro";
     padding: 0 0.3em;
     content: "\f0c8";
 }
@@ -113,7 +116,7 @@
 }
 .pointer-settings .chooser-checkbox input[type="checkbox"] + a:before {
     font-weight: 400;
-    font-family: "Font Awesome 5 Free";
+    font-family: "Font Awesome 6 Pro";
     padding: 0 0.3em;
     content: "\f0c8";
 }
@@ -179,7 +182,7 @@
 }
 .pointer-settings .chooser-tab.active .chooser .add-pointer:before {
     content: "\f067";
-    font-family: "Font Awesome 5 Free";
+    font-family: "Font Awesome 6 Pro";
     font-weight: 900;
 }
 .pointer-settings .chooser-tab.active .chooser .delete-pointer {
@@ -188,7 +191,7 @@
 .pointer-settings .chooser-tab.active .chooser .delete-pointer:before {
     font-size: 0.8em;
     content: "\f1f8";
-    font-family: "Font Awesome 5 Free";
+    font-family: "Font Awesome 6 Pro";
     font-weight: 900;
 }
 .pointer-settings .chooser-tab.active .chooser .header .delete-pointer:before {

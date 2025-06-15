@@ -5,27 +5,27 @@ import initControls from "./keybindings.js";
 export const initHooks = async () => {};
 
 export const setupHooks = async () => {
-    // setApi(API);
+  // setApi(API);
 };
 
 export const readyHooks = () => {
-    loadTemplates([`modules/${CONSTANTS.MODULE_ID}/templates/designer.html`]);
+  foundry.applications.handlebars.loadTemplates([`modules/${CONSTANTS.MODULE_ID}/templates/designer.html`]);
 
-    Hooks.on("updateUser", (entity, udata) => {
-        if (udata.color) {
-            canvas.controls.pointer.updateUserColor(entity);
-        }
-        if (udata.flags?.pointer?.settings) {
-            canvas.controls.pointer.update(entity);
-        }
-        if (udata.flags?.pointer?.settings?.controls && entity.id === game.user.id) {
-            initControls();
-        }
-    });
+  Hooks.on("updateUser", (entity, udata) => {
+    if (udata.color) {
+      canvas.controls.pointer.updateUserColor(entity);
+    }
+    if (udata.flags?.pointer?.settings) {
+      canvas.controls.pointer.update(entity);
+    }
+    if (udata.flags?.pointer?.settings?.controls && entity.id === game.user.id) {
+      initControls();
+    }
+  });
 
-    PointerContainer.init();
+  PointerContainer.init();
+  initControls();
+  Hooks.on("canvasReady", () => {
     initControls();
-    Hooks.on("canvasReady", () => {
-        initControls();
-    });
+  });
 };
