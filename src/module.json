@@ -2,7 +2,7 @@
     "id": "pointer",
     "title": "PnP - Pointer and Pings!",
     "description": "Gives all players the option to show a customizable cursor on demand, as well as ping any location with a custom ping!<br>Hotkeys, pings, pointer, everything customizable!<br>As GM you can also move your players view to your pin on demand.",
-    "version": "13.2.3",
+    "version": "13.2.4",
     "authors": [
         {
             "name": "Moerill",
@@ -83,8 +83,8 @@
     ],
     "packs": [],
     "url": "https://github.com/p4535992/foundryvtt-pointer",
-    "manifest": "https://github.com/p4535992/foundryvtt-pointer/releases/download/13.2.3/module.json",
-    "download": "https://github.com/p4535992/foundryvtt-pointer/releases/download/13.2.3/module.zip",
+    "manifest": "https://github.com/p4535992/foundryvtt-pointer/releases/download/13.2.4/module.json",
+    "download": "https://github.com/p4535992/foundryvtt-pointer/releases/download/13.2.4/module.zip",
     "readme": "https://github.com/p4535992/foundryvtt-pointer/blob/master/README.md",
     "changelog": "https://github.com/p4535992/foundryvtt-pointer/blob/master/CHANGELOG.md",
     "bugs": "https://github.com/p4535992/foundryvtt-pointer/issues",
