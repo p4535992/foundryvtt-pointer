@@ -2,7 +2,10 @@ import CONSTANTS from "./constants.js";
 import { PointerManager } from "./pointer-manager.js";
 import initControls from "./keybindings.js";
 
-export const initHooks = async () => {};
+let manager;
+export const initHooks = async () => {
+  manager = PointerManager.init();
+};
 
 export const setupHooks = async () => {
   // setApi(API);
@@ -10,9 +13,6 @@ export const setupHooks = async () => {
 
 export const readyHooks = () => {
   foundry.applications.handlebars.loadTemplates([`modules/${CONSTANTS.MODULE_ID}/templates/designer.html`]);
-
-  const manager = PointerManager.init();
-
   Hooks.on("updateUser", (entity, udata) => {
     if (udata.color) {
       canvas.controls.pointer?.updateUserColor(entity);
