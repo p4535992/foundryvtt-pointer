@@ -1,3 +1,8 @@
+
+### 13.2.5
+
+- Fix https://github.com/p4535992/foundryvtt-pointer/issues/9#issuecomment-3627222507 ty to @samulopez and the PR https://github.com/p4535992/foundryvtt-pointer/pull/12
+
 ### 13.2.4
 
 - Fix https://github.com/p4535992/foundryvtt-pointer/issues/9 ty to @samulopez and the PR https://github.com/p4535992/foundryvtt-pointer/pull/11
