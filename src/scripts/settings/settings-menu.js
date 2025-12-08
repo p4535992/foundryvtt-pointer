@@ -354,22 +354,8 @@ export class PointerSettingsMenu extends foundry.applications.api.HandlebarsAppl
         }
 
         await this.submit(ev);
-        updateCanvas();
       }),
     );
-
-    const updateCanvas = () => {
-      const pointerId = this.userData.pointer;
-      const collection = game.settings.get(CONSTANTS.MODULE_ID, "collection");
-      const pointerData = collection.find((e) => e.id === pointerId) || collection[0];
-      pointerData.position = new PIXI.Point(this._pixiApp.view.width / 2, this._pixiApp.view.height / 2);
-
-      // Removing last pointer
-      this._pixiApp.stage.removeChild(this._pixiApp.stage.children[2]);
-
-      const pointer = new Pointer(pointerData, game.user.id, this.options.gridSize);
-      this._pixiApp.stage.addChild(pointer);
-    };
 
     if (!game.user.isGM) {
       return;
@@ -646,6 +632,7 @@ export class PointerSettingsMenu extends foundry.applications.api.HandlebarsAppl
         current: this.pointer.img || "",
         callback: (path) => {
           this.pointer.update({ img: path });
+          this.pointer.save();
         },
         top: this.position.top + 40,
         left: this.position.left + 10,
