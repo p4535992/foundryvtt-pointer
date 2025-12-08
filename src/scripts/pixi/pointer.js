@@ -126,7 +126,10 @@ export class Pointer extends PIXI.Container {
   async save() {
     // do update stuff here
     const collection = foundry.utils.duplicate(game.settings.get(CONSTANTS.MODULE_ID, "collection"));
-    let idx = collection.findIndex((e) => e.id === this.id);
+    const idx = collection.findIndex((e) => e.id === this.data.id);
+    if (idx === -1) {
+      return;
+    }
     const data = foundry.utils.duplicate(this.data);
     delete data.position;
     collection[idx] = data;
