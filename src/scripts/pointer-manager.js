@@ -50,6 +50,8 @@ export class PointerManager {
                 force: data.force,
                 scale: data.scale,
             });
+		// move canvas to pinged position
+		canvas.animatePan({x: data.position.x, y: data.position.y, scale: data.scale});
         }
     }
 
