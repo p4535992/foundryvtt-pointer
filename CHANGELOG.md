@@ -1,3 +1,7 @@
+### 14.0.0 (BETA)
+
+- Update manifest json
+
 ### 13.2.6
 
 - Fix https://github.com/p4535992/foundryvtt-pointer/issues/13
